@@ -27,9 +27,13 @@ const Diagnosys: React.FC = () => {
         const enteredHdl = 7;
         const enteredTrigliserida = 8;
         const enteredInsulin = 9;
-        const enteredHasil = 10;
+        const hasil = 10;
 
-        diagnosisCtx.addDiagnosis(enteredEmail, enteredName.toString(), enteredTelepon, enteredSex, enteredUmur, enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin, enteredHasil);
+        //gdp threshold
+        
+        hasil = fungsi(blablabla);
+
+        diagnosisCtx.addDiagnosis(enteredEmail, enteredName.toString(), enteredTelepon, enteredSex, enteredUmur, enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin, hasil);
 
         history.push("/result");
     }
