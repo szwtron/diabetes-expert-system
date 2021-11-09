@@ -6,9 +6,9 @@ import { Directory, Filesystem } from '@capacitor/filesystem';
 const DiagnosisContextProvider: React.FC = props => {
     const [diagnosis, setDiagnosis] = useState<Diagnosis[]>([]);
 
-    const addDiagnosis = (id: string, email: string, name: string, telepon: number, sex: string, umur: number, gdp: number, gpp: number, gpt: number, gd2pp: number, hba1c: number, hdl: number, trigliserida: number, insulin: number, hasil: number) => {
+    const addDiagnosis = (email: string, name: string, telepon: number, sex: string, umur: number, gdp: number, gpp: number, gpt: number, gd2pp: number, hba1c: number, hdl: number, trigliserida: number, insulin: number, hasil: number) => {
         const newDiagnosis: Diagnosis = {
-            id: Math.random().toString(),
+            id: Math.round(Math.random() * 100),
             email,
             name,
             telepon,

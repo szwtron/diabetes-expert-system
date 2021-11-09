@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import DiagnosisContextProvider from './data/DiagnosisContextProvider';
 
 ReactDOM.render(
   <React.StrictMode>
+    <DiagnosisContextProvider>
     <App />
+    </DiagnosisContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface Diagnosis {
     //Data diri
-    id: string,
+    id: number,
     email: string,
     name: string,
     telepon: number,
@@ -26,7 +26,7 @@ export interface Diagnosis {
 
 const DiagnosisContext = React.createContext<{
     diagnosis: Diagnosis[];
-    addDiagnosis: (id: string, email: string, name: string, telepon: number, sex: string, umur: number, gdp: number, gpp: number, gpt: number, gd2pp: number, hba1c: number, hdl: number, trigliserida: number, insulin: number, hasil: number) => void,
+    addDiagnosis: (email: string, name: string, telepon: number, sex: string, umur: number, gdp: number, gpp: number, gpt: number, gd2pp: number, hba1c: number, hdl: number, trigliserida: number, insulin: number, hasil: number) => void,
     initContext: () => void;
 }>({
     diagnosis: [],
