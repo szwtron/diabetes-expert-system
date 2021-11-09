@@ -1,7 +1,12 @@
 import { IonButton, IonCard, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react"
+import { useContext } from "react";
+import DiagnosisContext from "../data/diagnosis-context";
 import './Home.css';
 
 const Result = () => {
+    const diabetesCtx = useContext(DiagnosisContext);
+    console.log(diabetesCtx.diagnosis);
+    
     return (
         <IonPage>
             <IonHeader>
