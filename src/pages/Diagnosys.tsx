@@ -1,6 +1,8 @@
 import { IonButton, IonCard, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react";
 import './Home.css';
 
+
+
 const Diagnosys = () => {
   return (
     <IonPage>
