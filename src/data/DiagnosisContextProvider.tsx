@@ -12,7 +12,7 @@ const DiagnosisContextProvider: React.FC = props => {
             email,
             name,
             telepon,
-            sex, 
+            sex,
             umur,
             gdp,
             gpp,

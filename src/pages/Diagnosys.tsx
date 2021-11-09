@@ -1,5 +1,4 @@
 import { IonButton, IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonRow, IonText, IonTitle, IonToolbar } from "@ionic/react";
-import { IonButton, IonCard, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonRow, IonTitle, IonToolbar } from "@ionic/react";
 import { useContext, useRef } from "react";
 import { useHistory } from "react-router";
 import DiagnosisContext from "../data/diagnosis-context";
@@ -14,7 +13,7 @@ const Diagnosys: React.FC = () => {
     const history = useHistory();
 
     const addDiagnosisHandler = async () => {
-        
+
         const enteredEmail = "";
         const enteredName = nameRef.current?.value as string;
         const enteredTelepon = 0;
@@ -42,6 +41,7 @@ const Diagnosys: React.FC = () => {
                     <IonTitle>Diagnosys</IonTitle>
                 </IonToolbar>
             </IonHeader>
+            <IonContent>
             <section className="hero">
                 <IonCard>
                     <div className="container">
@@ -331,6 +331,7 @@ const Diagnosys: React.FC = () => {
                                 </IonRow>
                             </IonGrid>
                         </div>
+                    </div>
                     </IonCard>
                 </section>
             </IonContent>
