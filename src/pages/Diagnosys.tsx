@@ -58,7 +58,7 @@ const Diagnosys = () => {
                                             <IonInput></IonInput>
                                         </IonItem>
                                         <IonItem>
-                                            <IonButton>Submit</IonButton>
+                                            <IonButton href="/result">Submit</IonButton>
                                         </IonItem>
                                     </div>
                                 </IonCol>
