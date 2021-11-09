@@ -1,0 +1,7 @@
+{
+  "name": "diabetes-expert-system",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

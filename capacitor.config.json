@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "diabetes-expert-system",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
