@@ -22,6 +22,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Diagnosys from './pages/Diagnosys';
+import Result from './pages/Result';
 
 const App: React.FC = () => (
   <IonApp>
@@ -32,6 +33,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/diagnosys">
           <Diagnosys />
+        </Route>
+        <Route exact path="/result">
+          <Result />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
