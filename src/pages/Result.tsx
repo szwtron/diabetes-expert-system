@@ -26,7 +26,7 @@ const Result = () => {
                                 <IonGrid>
                                     <IonRow>
                                         <IonCol size="6">
-                                            <IonImg src="https://www.dropbox.com/s/4my4ybjaiw0q4ee/image-removebg-preview.png?raw=1" />
+                                            <IonImg src="assets/img/medical-tools.png" />
                                         </IonCol>
                                         <IonCol size="6">
                                             <div>
