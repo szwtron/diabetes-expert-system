@@ -1,6 +1,6 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import DiagnosisContext, {Diagnosis} from "./diagnosis-context";
-import {Storage} from "@capacitor/storage"
+import React, { useCallback, useEffect, useState } from 'react';
+import DiagnosisContext, { Diagnosis } from "./diagnosis-context";
+import { Storage } from "@capacitor/storage"
 import { Directory, Filesystem } from '@capacitor/filesystem';
 
 const DiagnosisContextProvider: React.FC = props => {
@@ -50,11 +50,11 @@ const DiagnosisContextProvider: React.FC = props => {
                 hasil: diagnosis.hasil
             }
         });
-        Storage.set({key: 'diagnosis', value: JSON.stringify(storableDiagnosis)});
+        Storage.set({ key: 'diagnosis', value: JSON.stringify(storableDiagnosis) });
     }, [diagnosis]);
 
     const initContext = useCallback(async () => {
-        const diagnosisData = await Storage.get({key: 'diagnosis'});
+        const diagnosisData = await Storage.get({ key: 'diagnosis' });
         const storedDiagnosies = diagnosisData.value ? JSON.parse(diagnosisData.value) : [];
         const loadedDiagnosis: Diagnosis[] = [];
         for (const storedDiagnosis of storedDiagnosies) {
@@ -84,8 +84,8 @@ const DiagnosisContextProvider: React.FC = props => {
     }, []);
 
     return (
-        <DiagnosisContext.Provider value = {{diagnosis, addDiagnosis, initContext}}>
-        {props.children}
+        <DiagnosisContext.Provider value={{ diagnosis, addDiagnosis, initContext }}>
+            {props.children}
         </DiagnosisContext.Provider>
     );
 }
