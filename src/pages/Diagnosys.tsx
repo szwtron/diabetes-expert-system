@@ -3,6 +3,7 @@ import { useContext, useRef } from "react";
 import { useHistory } from "react-router";
 import DiagnosisContext from "../data/diagnosis-context";
 import './Home.css';
+import { InferenceEngine } from "../components/InferenceEngine";
 
 
 
@@ -11,6 +12,7 @@ const Diagnosys: React.FC = () => {
     const nameRef = useRef<HTMLIonInputElement>(null);
     const diagnosisCtx = useContext(DiagnosisContext);
     const history = useHistory();
+    const inferenceEngine = new InferenceEngine();
 
     const addDiagnosisHandler = async () => {
 
@@ -19,7 +21,7 @@ const Diagnosys: React.FC = () => {
         const enteredTelepon = 0;
         const enteredSex = "";
         const enteredUmur = 1;
-        const enteredGdp = 2;
+        const enteredGdp = 75;
         const enteredGpp = 3;
         const enteredGpt = 4;
         const enteredGd2pp = 5;
@@ -29,9 +31,11 @@ const Diagnosys: React.FC = () => {
         const enteredInsulin = 9;
         const hasil = 10;
 
+        const hasil2 = inferenceEngine.fuzzification(enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin);
+        console.log("baba" + hasil2);
         //gdp threshold
         
-        hasil = fungsi(blablabla);
+        // hasil = fungsi(blablabla);
 
         diagnosisCtx.addDiagnosis(enteredEmail, enteredName.toString(), enteredTelepon, enteredSex, enteredUmur, enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin, hasil);
 
@@ -56,7 +60,7 @@ const Diagnosys: React.FC = () => {
                                     <div>
                                         <IonItem>
                                             <IonLabel position="floating">Nama</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput ref={nameRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Email</IonLabel>
@@ -107,7 +111,7 @@ const Diagnosys: React.FC = () => {
                                             <IonInput></IonInput>
                                         </IonItem>
                                         <IonItem>
-                                            <IonButton href="/result">Submit</IonButton>
+                                            <IonButton onClick={addDiagnosisHandler}>Submit</IonButton>
                                         </IonItem>
                                     </div>
                                 </IonCol>
