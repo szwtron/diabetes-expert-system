@@ -392,27 +392,98 @@ export class InferenceEngine {
         let diabetes2: number[] = [0];
         let negatifDiabetes : number[] = [0];
 
-        for(var i = 0; i < 36; i++){
-            //console.log("Rules - " + (i+1));
-            console.log(weightRule[i]);
-            if(i == 22 || i == 23 || i == 24 || i == 31 || i == 35){
-                praDiabetes[j] = weightRule[i];
-                j++;
-            }
-            if(i == 25 || i == 26 || i == 27){
-                diabetes1[k] = weightRule[i];
-                k++;
-            }
-            if(i == 28 || i == 29 || i == 30 || i == 32 || i == 33 || i == 34){ 
-                diabetes2[l] = weightRule[i];
-                l++;
-            }
+        for(var i = 0; i < 22; i++){
             negatifDiabetes[m] = weightRule[i];
             m++;
         }
 
-        console.log("Non diabetes");
         for(var i = 0; i < 36; i++){
+            //console.log("Rules - " + (i+1));
+            console.log("Rules - " + (i+1) + " = " + weightRule[i]);
+
+            //Pradiabetes
+            if(i == 22){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 23){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 24){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 31){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 35){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+
+            //diabetes tipe 1
+            if(i == 25){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+            if(i == 26){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+            if(i == 27){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+
+            //Diabetes tipe 2
+            if(i == 28){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+            if(i == 29){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+            if(i == 30){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+            if(i == 32){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+            if(i == 33){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+            if(i == 34){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+
+
+            // if(i == 22 || i == 23 || i == 24 || i == 31 || i == 35){
+            //     praDiabetes[j] = weightRule[i];
+            //     j++;
+            // }
+            // if(i == 25 || i == 26 || i == 27){
+            //     diabetes1[k] = weightRule[i];
+            //     k++;
+            // }
+            // if(i == 28 || i == 29 || i == 30 || i == 32 || i == 33 || i == 34){ 
+            //     diabetes2[l] = weightRule[i];
+            //     l++;
+            // }
+        }
+
+        console.log("Non diabetes");
+        for(var i = 0; i < m; i++){
             if(negatifDiabetes[i] != 0){
                 console.log("Rules - " + (i+1));
                 console.log(negatifDiabetes[i]);
@@ -420,7 +491,7 @@ export class InferenceEngine {
         }
 
         console.log("Pra diabetes");
-        for(var i = 0; i < 36; i++){
+        for(var i = 0; i < j; i++){
             if(praDiabetes[i] != 0){
                 console.log("Rules - " + (i+1));
                 console.log(praDiabetes[i]);
@@ -428,7 +499,7 @@ export class InferenceEngine {
         }
 
         console.log("diabetes tipe 1");
-        for(var i = 0; i < 36; i++){
+        for(var i = 0; i < k; i++){
             if(diabetes1[i] != 0){
                 console.log("Rules - " + (i+1));
                 console.log(diabetes1[i]);
@@ -436,16 +507,27 @@ export class InferenceEngine {
         }
 
         console.log("diabetes tipe 2");
-        for(var i = 0; i < 36; i++){
+        for(var i = 0; i < l; i++){
             if(diabetes2[i] != 0){
                 console.log("Rules - " + (i+1));
                 console.log(diabetes2[i]);
+            }
+        }  
+
+        let maxProbs: number = 0;
+        let index: number = 0;
+        for(var i = 0; i < 36; i++){
+            if(weightRule[i] >= maxProbs){
+                maxProbs = Math.max(weightRule[i]);
+                index = i;
             }
         }
 
         //tes mamdani
         //range diabetes 0 - 1
-        console.log("Mamdani");
+        console.log("Hasil diagnosa")
+        console.log("Sesuai dengan rules nomor = " + index);
+        console.log("Dengan bobot = " + (maxProbs * 100) + "%");
         
 
         //If-then rule

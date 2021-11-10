@@ -25,7 +25,7 @@ const Diagnosys: React.FC = () => {
         const enteredGpp = 73;
         const enteredGpt = 111;
         const enteredGd2pp = 102;
-        const enteredHba1c = 5;
+        const enteredHba1c = 7;
         const enteredHdl = 53;
         const enteredTrigliserida = 153;
         const enteredInsulin = 2;
