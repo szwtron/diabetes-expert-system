@@ -3,13 +3,13 @@ export class InferenceEngine {
         let fhasil: string = 'Negatif Diabetes';
 
         //Fuzzification gdp
-        let fgdp: number[] = [0] ;
+        let fgdp: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range gdp rendah 75 - 85
-        if(gdp <= 75){
+        if (gdp <= 75) {
             fgdp[0] = 1;
-        } else if (gdp >= 75 && gdp <= 85){
+        } else if (gdp >= 75 && gdp <= 85) {
             fgdp[0] = ((85 - gdp) / 10);
             console.log("fgdp[0] = " + fgdp[0]);
         } else if (gdp >= 85) {
@@ -17,35 +17,35 @@ export class InferenceEngine {
         }
 
         //Range gdp sedang
-        if(gdp <= 75){
+        if (gdp <= 75) {
             fgdp[1] = 0;
-        } else if (gdp >= 75 && gdp <= 85){
+        } else if (gdp >= 75 && gdp <= 85) {
             fgdp[1] = ((gdp - 75) / 10);
-        } else if (gdp >= 85 && gdp <= 115){
+        } else if (gdp >= 85 && gdp <= 115) {
             fgdp[1] = 1;
-        } else if (gdp >= 85 && gdp <= 115){
+        } else if (gdp >= 85 && gdp <= 115) {
             fgdp[1] = ((125 - gdp) / 10);
-        }else if (gdp >= 125) {
+        } else if (gdp >= 125) {
             fgdp[1] = 0;
         }
 
         //Range gdp tinggi
-        if(gdp <= 115){
+        if (gdp <= 115) {
             fgdp[2] = 0;
-        } else if (gdp >= 115 && gdp <= 125){
+        } else if (gdp >= 115 && gdp <= 125) {
             fgdp[2] = ((gdp - 115) / 10);
-        } else if (gdp >= 125 && gdp <= 145){
+        } else if (gdp >= 125 && gdp <= 145) {
             fgdp[2] = 1;
         } else if (gdp >= 145 && gdp <= 155) {
             fgdp[2] = ((155 - gdp) / 10);
-        }else if (gdp >= 155) {
+        } else if (gdp >= 155) {
             fgdp[2] = 0;
         }
 
         //Range gdp sangat tinggi
-        if(gdp <= 145){
+        if (gdp <= 145) {
             fgdp[3] = 0;
-        } else if (gdp >= 145 && gdp <= 155){
+        } else if (gdp >= 145 && gdp <= 155) {
             fgdp[3] = ((gdp - 145) / 10);
         } else if (gdp >= 155) {
             fgdp[3] = 1;
@@ -53,48 +53,48 @@ export class InferenceEngine {
 
 
         //Fuzzification gpp
-        let fgpp: number[] = [0] ;
+        let fgpp: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range gpp rendah 65 - 75
-        if(gpp <= 65){
+        if (gpp <= 65) {
             fgpp[0] = 1;
-        } else if (gpp >= 65 && gpp <= 75){
+        } else if (gpp >= 65 && gpp <= 75) {
             fgpp[0] = ((75 - gpp) / 10);
         } else if (gpp >= 75) {
             fgpp[0] = 0;
         }
 
         //Range gpp sedang
-        if(gpp <= 65){
+        if (gpp <= 65) {
             fgpp[1] = 0;
-        } else if (gpp >= 65 && gpp <= 75){
+        } else if (gpp >= 65 && gpp <= 75) {
             fgpp[1] = ((gpp - 65) / 10);
-        } else if (gpp >= 75 && gpp <= 105){
+        } else if (gpp >= 75 && gpp <= 105) {
             fgpp[1] = 1;
-        } else if (gpp >= 105 && gpp <= 115){
+        } else if (gpp >= 105 && gpp <= 115) {
             fgpp[1] = ((115 - gpp) / 10);
-        }else if (gpp >= 115) {
+        } else if (gpp >= 115) {
             fgpp[1] = 0;
         }
 
         //Range gpp tinggi
-        if(gpp <= 105){
+        if (gpp <= 105) {
             fgpp[2] = 0;
-        } else if (gpp >= 105 && gpp <= 115){
+        } else if (gpp >= 105 && gpp <= 115) {
             fgpp[2] = ((gpp - 105) / 10);
-        } else if (gpp >= 115 && gpp <= 135){
+        } else if (gpp >= 115 && gpp <= 135) {
             fgpp[2] = 1;
         } else if (gpp >= 135 && gpp <= 145) {
             fgpp[2] = ((145 - gpp) / 10);
-        }else if (gpp >= 145) {
+        } else if (gpp >= 145) {
             fgpp[2] = 0;
         }
 
         //Range gdp sangat tinggi
-        if(gpp <= 135){
+        if (gpp <= 135) {
             fgpp[3] = 0;
-        } else if (gpp >= 135 && gpp <= 145){
+        } else if (gpp >= 135 && gpp <= 145) {
             fgpp[3] = ((gpp - 135) / 10);
         } else if (gpp >= 145) {
             fgpp[3] = 1;
@@ -102,35 +102,35 @@ export class InferenceEngine {
 
 
         //Fuzzification gpt
-        let fgpt: number[] = [0] ;
+        let fgpt: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range gpt rendah 65 - 75
-        if(gpt <= 105){
+        if (gpt <= 105) {
             fgpt[0] = 1;
-        } else if (gpt >= 105 && gpt <= 115){
+        } else if (gpt >= 105 && gpt <= 115) {
             fgpt[0] = ((115 - gpt) / 10);
         } else if (gpt >= 115) {
             fgpt[0] = 0;
         }
 
         //Range gpt sedang
-        if(gpt <= 105){
+        if (gpt <= 105) {
             fgpt[1] = 0;
-        } else if (gpt >= 105 && gpt <= 115){
+        } else if (gpt >= 105 && gpt <= 115) {
             fgpt[1] = ((gpt - 105) / 10);
-        } else if (gpt >= 115 && gpt <= 145){
+        } else if (gpt >= 115 && gpt <= 145) {
             fgpt[1] = 1;
-        } else if (gpt >= 145 && gpt <= 155){
+        } else if (gpt >= 145 && gpt <= 155) {
             fgpt[1] = ((155 - gpt) / 10);
-        }else if (gpt >= 155) {
+        } else if (gpt >= 155) {
             fgpt[1] = 0;
         }
 
         //Range gpt tinggi
-        if(gpt <= 145){
+        if (gpt <= 145) {
             fgpt[2] = 0;
-        } else if (gpt >= 145 && gpt <= 155){
+        } else if (gpt >= 145 && gpt <= 155) {
             fgpt[2] = ((gpt - 145) / 10);
         } else if (gpt >= 155) {
             fgpt[2] = 1;
@@ -138,48 +138,48 @@ export class InferenceEngine {
 
 
         //Fuzzification gd2pp
-        let fgd2pp: number[] = [0] ;
+        let fgd2pp: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range gd2pp rendah 65 - 75
-        if(gd2pp <= 95){
+        if (gd2pp <= 95) {
             fgd2pp[0] = 1;
-        } else if (gd2pp >= 95 && gd2pp <= 105){
+        } else if (gd2pp >= 95 && gd2pp <= 105) {
             fgd2pp[0] = ((105 - gd2pp) / 10);
         } else if (gd2pp >= 105) {
             fgd2pp[0] = 0;
         }
 
         //Range gd2pp sedang
-        if(gd2pp <= 95){
+        if (gd2pp <= 95) {
             fgd2pp[1] = 0;
-        } else if (gd2pp >= 95 && gd2pp <= 105){
+        } else if (gd2pp >= 95 && gd2pp <= 105) {
             fgd2pp[1] = ((gd2pp - 95) / 10);
-        } else if (gd2pp >= 105 && gd2pp <= 135){
+        } else if (gd2pp >= 105 && gd2pp <= 135) {
             fgd2pp[1] = 1;
-        } else if (gd2pp >= 135 && gd2pp <= 145){
+        } else if (gd2pp >= 135 && gd2pp <= 145) {
             fgd2pp[1] = ((145 - gd2pp) / 10);
-        }else if (gd2pp >= 145) {
+        } else if (gd2pp >= 145) {
             fgd2pp[1] = 0;
         }
 
         //Range gd2pp tinggi
-        if(gd2pp <= 135){
+        if (gd2pp <= 135) {
             fgd2pp[2] = 0;
-        } else if (gd2pp >= 135 && gd2pp <= 145){
+        } else if (gd2pp >= 135 && gd2pp <= 145) {
             fgd2pp[2] = ((gd2pp - 135) / 10);
-        } else if (gd2pp >= 145 && gd2pp <= 195){
+        } else if (gd2pp >= 145 && gd2pp <= 195) {
             fgd2pp[2] = 1;
-        } else if (gd2pp >= 195 && gd2pp <= 205){
+        } else if (gd2pp >= 195 && gd2pp <= 205) {
             fgd2pp[2] = ((205 - gd2pp) / 10);
         } else if (gd2pp >= 205) {
             fgd2pp[2] = 0;
         }
 
         //Range gd2pp sangat tinggi
-        if(gd2pp <= 195){
+        if (gd2pp <= 195) {
             fgd2pp[3] = 0;
-        } else if (gd2pp >= 195 && gd2pp <= 205){
+        } else if (gd2pp >= 195 && gd2pp <= 205) {
             fgd2pp[3] = ((gd2pp - 195) / 10);
         } else if (gd2pp >= 205) {
             fgd2pp[3] = 1;
@@ -223,108 +223,108 @@ export class InferenceEngine {
 
 
         //Fuzzification hdl
-        let fhdl: number[] = [0] ;
+        let fhdl: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range hdl rendah
-        if(hdl <= 35){
-           fhdl[0] = 1;
-        } else if (hdl >= 35 && hdl <= 45){
-           fhdl[0] = ((45 - hdl) / 10);
+        if (hdl <= 35) {
+            fhdl[0] = 1;
+        } else if (hdl >= 35 && hdl <= 45) {
+            fhdl[0] = ((45 - hdl) / 10);
         } else if (hdl >= 45) {
-           fhdl[0] = 0;
+            fhdl[0] = 0;
         }
 
         //Range hdl sedang
-        if(hdl <= 35){
-           fhdl[1] = 0;
-        } else if (hdl >= 35 && hdl <= 45){
-           fhdl[1] = ((gdp - 35) / 10);
-        } else if (hdl >= 45 && hdl <= 55){
-           fhdl[1] = 1;
-        } else if (hdl >= 55 && hdl <= 65){
-           fhdl[1] = ((65 - hdl) / 10);
-        }else if (hdl >= 65) {
-           fhdl[1] = 0;
+        if (hdl <= 35) {
+            fhdl[1] = 0;
+        } else if (hdl >= 35 && hdl <= 45) {
+            fhdl[1] = ((gdp - 35) / 10);
+        } else if (hdl >= 45 && hdl <= 55) {
+            fhdl[1] = 1;
+        } else if (hdl >= 55 && hdl <= 65) {
+            fhdl[1] = ((65 - hdl) / 10);
+        } else if (hdl >= 65) {
+            fhdl[1] = 0;
         }
 
         //Range hdl tinggi
-        if(hdl <= 55){
-           fhdl[2] = 0;
-        } else if (hdl >= 55 && hdl <= 65){
-           fhdl[2] = ((hdl - 55) / 10);
-        } else if (hdl >=65){
-           fhdl[2] = 1;
+        if (hdl <= 55) {
+            fhdl[2] = 0;
+        } else if (hdl >= 55 && hdl <= 65) {
+            fhdl[2] = ((hdl - 55) / 10);
+        } else if (hdl >= 65) {
+            fhdl[2] = 1;
         }
 
         //Fuzzification trigliserida
-        let ftrigliserida: number[] = [0] ;
+        let ftrigliserida: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range trigliserida rendah
-        if(trigliserida <= 45){
-           ftrigliserida[0] = 1;
-        } else if (trigliserida >= 45 && trigliserida <= 55){
-           ftrigliserida[0] = ((55 - trigliserida) / 10);
+        if (trigliserida <= 45) {
+            ftrigliserida[0] = 1;
+        } else if (trigliserida >= 45 && trigliserida <= 55) {
+            ftrigliserida[0] = ((55 - trigliserida) / 10);
         } else if (trigliserida >= 55) {
-           ftrigliserida[0] = 0;
+            ftrigliserida[0] = 0;
         }
 
         //Range trigliserida sedang
-        if(trigliserida <= 45){
-           ftrigliserida[1] = 0;
-        } else if (trigliserida >= 45 && trigliserida <= 55){
-           ftrigliserida[1] = ((gdp - 45) / 10);
-        } else if (trigliserida >= 55 && trigliserida <= 145){
-           ftrigliserida[1] = 1;
-        } else if (trigliserida >= 145 && trigliserida <= 155){
-           ftrigliserida[1] = ((155 - trigliserida) / 10);
-        }else if (trigliserida >= 155) {
-           ftrigliserida[1] = 0;
+        if (trigliserida <= 45) {
+            ftrigliserida[1] = 0;
+        } else if (trigliserida >= 45 && trigliserida <= 55) {
+            ftrigliserida[1] = ((gdp - 45) / 10);
+        } else if (trigliserida >= 55 && trigliserida <= 145) {
+            ftrigliserida[1] = 1;
+        } else if (trigliserida >= 145 && trigliserida <= 155) {
+            ftrigliserida[1] = ((155 - trigliserida) / 10);
+        } else if (trigliserida >= 155) {
+            ftrigliserida[1] = 0;
         }
 
         //Range trigliserida tinggi
-        if(trigliserida <= 145){
-           ftrigliserida[2] = 0;
-        } else if (trigliserida >= 145 && trigliserida <= 155){
-           ftrigliserida[2] = ((trigliserida - 145) / 10);
-        } else if (trigliserida >=155){
-           ftrigliserida[2] = 1;
+        if (trigliserida <= 145) {
+            ftrigliserida[2] = 0;
+        } else if (trigliserida >= 145 && trigliserida <= 155) {
+            ftrigliserida[2] = ((trigliserida - 145) / 10);
+        } else if (trigliserida >= 155) {
+            ftrigliserida[2] = 1;
         }
 
         //Fuzzification insulin
-        let finsulin: number[] = [0] ;
+        let finsulin: number[] = [0];
 
         //0 low, 1  mid, 2 high, 3 very high
         //Range trigliserida rendah
-        if(insulin <= 3){
-           finsulin[0] = 1;
-        } else if (insulin >= 3 && insulin <= 4){
-           finsulin[0] = ((4 - insulin));
+        if (insulin <= 3) {
+            finsulin[0] = 1;
+        } else if (insulin >= 3 && insulin <= 4) {
+            finsulin[0] = ((4 - insulin));
         } else if (insulin >= 4) {
-           finsulin[0] = 0;
+            finsulin[0] = 0;
         }
 
         //Range insulin sedang
-        if(insulin <= 3){
-           finsulin[1] = 0;
-        } else if (insulin >= 3 && insulin <= 4){
-           finsulin[1] = ((gdp - 4));
-        } else if (insulin >= 4 && insulin <= 6){
-           finsulin[1] = 1;
-        } else if (insulin >= 6 && insulin <= 7){
-           finsulin[1] = ((7 - insulin));
-        }else if (insulin >= 7) {
-           finsulin[1] = 0;
+        if (insulin <= 3) {
+            finsulin[1] = 0;
+        } else if (insulin >= 3 && insulin <= 4) {
+            finsulin[1] = ((gdp - 4));
+        } else if (insulin >= 4 && insulin <= 6) {
+            finsulin[1] = 1;
+        } else if (insulin >= 6 && insulin <= 7) {
+            finsulin[1] = ((7 - insulin));
+        } else if (insulin >= 7) {
+            finsulin[1] = 0;
         }
 
         //Range insulin tinggi
-        if(insulin <= 6){
-           finsulin[2] = 0;
-        } else if (insulin >= 6 && insulin <= 7){
-           finsulin[2] = ((insulin - 6) / 10);
-        } else if (insulin >=7){
-           finsulin[2] = 1;
+        if (insulin <= 6) {
+            finsulin[2] = 0;
+        } else if (insulin >= 6 && insulin <= 7) {
+            finsulin[2] = ((insulin - 6) / 10);
+        } else if (insulin >= 7) {
+            finsulin[2] = 1;
         }
 
 
@@ -378,78 +378,78 @@ export class InferenceEngine {
         var m = 0;
         //Memisahkan weight rule negatif diabetes, pra diabetes, diabetes 1, dan diabetes 2
         let praDiabetes: number[] = [0];
-        let diabetes1 : number[] = [0];
+        let diabetes1: number[] = [0];
         let diabetes2: number[] = [0];
-        let negatifDiabetes : number[] = [0];
+        let negatifDiabetes: number[] = [0];
 
         //Negatif diabetes
-        for(var i = 0; i < 36; i++){
+        for (var i = 0; i < 36; i++) {
             negatifDiabetes[m] = weightRule[i];
             m++;
         }
 
-        for(var i = 0; i < 36; i++){
+        for (var i = 0; i < 36; i++) {
             //Pradiabetes
-            if(i == 22){
+            if (i == 22) {
                 praDiabetes[j] = weightRule[i];
                 j++;
             }
-            if(i == 23){
+            if (i == 23) {
                 praDiabetes[j] = weightRule[i];
                 j++;
             }
-            if(i == 24){
+            if (i == 24) {
                 praDiabetes[j] = weightRule[i];
                 j++;
             }
-            if(i == 31){
+            if (i == 31) {
                 praDiabetes[j] = weightRule[i];
                 j++;
             }
-            if(i == 35){
+            if (i == 35) {
                 praDiabetes[j] = weightRule[i];
                 j++;
             }
 
             //diabetes tipe 1
-            if(i == 25){
+            if (i == 25) {
                 diabetes1[k] = weightRule[i];
                 k++;
             }
-            if(i == 26){
+            if (i == 26) {
                 diabetes1[k] = weightRule[i];
                 k++;
             }
-            if(i == 27){
+            if (i == 27) {
                 diabetes1[k] = weightRule[i];
                 k++;
             }
 
             //Diabetes tipe 2
-            if(i == 28){
+            if (i == 28) {
                 diabetes2[l] = weightRule[i];
                 l++;
             }
-            if(i == 29){
-                diabetes2[l] = weightRule[i];
-                l++;
-            }
-
-            if(i == 30){
+            if (i == 29) {
                 diabetes2[l] = weightRule[i];
                 l++;
             }
 
-            if(i == 32){
+            if (i == 30) {
                 diabetes2[l] = weightRule[i];
                 l++;
             }
 
-            if(i == 33){
+            if (i == 32) {
                 diabetes2[l] = weightRule[i];
                 l++;
             }
-            if(i == 34){
+
+            if (i == 33) {
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+            if (i == 34) {
                 diabetes2[l] = weightRule[i];
                 l++;
             }
@@ -457,8 +457,8 @@ export class InferenceEngine {
 
         let maxProbs: number = 0;
         let index: number = 0;
-        for(var i = 0; i < 36; i++){
-            if(weightRule[i] >= maxProbs){
+        for (var i = 0; i < 36; i++) {
+            if (weightRule[i] >= maxProbs) {
                 maxProbs = Math.max(weightRule[i]);
                 index = i;
             }
@@ -468,13 +468,13 @@ export class InferenceEngine {
         console.log("Sesuai dengan rules nomor = " + index);
         console.log("Dengan bobot = " + (maxProbs * 100) + "%");
 
-        if (index < 22){
+        if (index < 22) {
             fhasil = "Negatif Diabetes";
-        } else if ((index >= 22 && index < 25) || index == 31 || index == 35){
+        } else if ((index >= 22 && index < 25) || index == 31 || index == 35) {
             fhasil = "Pra Diabetes";
-        } else if (index >= 25 && index < 28){
+        } else if (index >= 25 && index < 28) {
             fhasil = "Diabetes Tipe 1";
-        } else if ((index >= 28 && index < 31) || (index >= 32 && index < 35)){
+        } else if ((index >= 28 && index < 31) || (index >= 32 && index < 35)) {
             fhasil = "Diabetes Tipe 2";
         }
 

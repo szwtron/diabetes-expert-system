@@ -20,10 +20,10 @@ const Home: React.FC = () => {
           <div className="container">
             <div className="hero-inner">
               <div className="hero-copy">
-                <h1 className="hero-title mt-0">Expert System for Diabetes Diagnosys </h1>
-                <p className="hero-paragraph">Diagnose whether you are suffering from diabetes or not in less than 10 minutes</p>
+                <h1 className="hero-title mt-0">Sistem Pakar Online untuk Diagnosis Diabetes </h1>
+                <p className="hero-paragraph">Diagnosa apakah kamu menderita penyakit diabetes dalam waktu kurang dari 10 menit saja!</p>
                 <div className="hero-cta">
-                  <IonButton className="button" color="primary" href="/diagnosys">Diagnosys</IonButton>
+                  <IonButton className="button" color="primary" href="/diagnosis">Diagnosis</IonButton>
                 </div>
               </div>
               <div className="hero-figure anime-element">

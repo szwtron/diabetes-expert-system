@@ -30,8 +30,8 @@ const DiagnosisContext = React.createContext<{
     initContext: () => void;
 }>({
     diagnosis: [],
-    addDiagnosis: () => {},
-    initContext: ()  => {}
+    addDiagnosis: () => { },
+    initContext: () => { }
 });
 
 export default DiagnosisContext;
