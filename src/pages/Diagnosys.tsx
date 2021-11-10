@@ -31,7 +31,7 @@ const Diagnosys: React.FC = () => {
 
         //gdp threshold
         
-        hasil = fungsi(blablabla);
+        // hasil = fungsi(blablabla);
 
         diagnosisCtx.addDiagnosis(enteredEmail, enteredName.toString(), enteredTelepon, enteredSex, enteredUmur, enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin, hasil);
 
@@ -45,8 +45,8 @@ const Diagnosys: React.FC = () => {
                     <IonTitle>Diagnosys</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
-            <section className="hero">
+            <IonContent className="bg1">
+            <section className="hero ">
                 <IonCard>
                     <div className="container">
                         <div className="hero-inner">

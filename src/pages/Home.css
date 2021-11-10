@@ -6,6 +6,11 @@ html {
 body {
 	margin: 0;
 }
+.bg1{
+	/* --ion-background-color: #0f184a !important; */
+	--ion-background-color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) !important;
+}
+
 article,
 aside,
 footer,
@@ -1040,6 +1045,7 @@ label {
 .button:hover {
 	background: #262a33;
 }
+
 .button:active {
 	outline: 0;
 }
@@ -1055,7 +1061,8 @@ label {
 	background: linear-gradient(65deg, #0270d7 0, #0f8afd 100%);
 }
 .button-primary:hover {
-	background: #0982f4;
+	background: #fff;
+	color: #000;
 	background: linear-gradient(65deg, #0275e1 0, #198ffd 100%);
 }
 .button-block {
@@ -1120,6 +1127,7 @@ label {
 		transform: skewY(-12deg);
 	}
 }
+
 
 .hero {
 	text-align: center;
