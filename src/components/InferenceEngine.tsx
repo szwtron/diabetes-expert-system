@@ -16,7 +16,7 @@ export class InferenceEngine {
             fgdp[0] = 0;
         }
 
-        //Range gdp sedang 
+        //Range gdp sedang
         if(gdp <= 75){
             fgdp[1] = 0;
         } else if (gdp >= 75 && gdp <= 85){
@@ -65,7 +65,7 @@ export class InferenceEngine {
             fgpp[0] = 0;
         }
 
-        //Range gpp sedang 
+        //Range gpp sedang
         if(gpp <= 65){
             fgpp[1] = 0;
         } else if (gpp >= 65 && gpp <= 75){
@@ -114,7 +114,7 @@ export class InferenceEngine {
             fgpt[0] = 0;
         }
 
-        //Range gpt sedang 
+        //Range gpt sedang
         if(gpt <= 105){
             fgpt[1] = 0;
         } else if (gpt >= 105 && gpt <= 115){
@@ -150,7 +150,7 @@ export class InferenceEngine {
             fgd2pp[0] = 0;
         }
 
-        //Range gd2pp sedang 
+        //Range gd2pp sedang
         if(gd2pp <= 95){
             fgd2pp[1] = 0;
         } else if (gd2pp >= 95 && gd2pp <= 105){
@@ -220,7 +220,7 @@ export class InferenceEngine {
         } else if (hba1c >= 7) {
             fhba1c[2] = 1;
         }
-            
+
 
         //Fuzzification hdl
         let fhdl: number[] = [0] ;

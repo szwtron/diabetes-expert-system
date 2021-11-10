@@ -55,7 +55,7 @@ const Result = () => {
                                                     masuk ke dalam sel tubuh untuk diubah menjadi energi.</p>
                                                 :diagnosis.hasil == "Negatif Diabetes" ?
                                                     <p className="hero-paragraph">Anda negatif diabetes, tetaplah atur kadar gula yang anda konsumsi
-                                                    dan selalu jaga kesehatan.</p> 
+                                                    dan selalu jaga kesehatan.</p>
                                                 :diagnosis.hasil == "Pra Diabetes" ?
                                                     <p className="hero-paragraph">Anda terdeteksi memiliki gejala Pra Diabetes, segera konsultasi 
                                                     ke dokter, dan jangan lupa untuk mengatur kadar gula yang anda konsumsi.</p>
@@ -66,7 +66,6 @@ const Result = () => {
                                             </div>
                                         </IonCol>
                                         ))}
-                                        
                                     </IonRow>
                                 </IonGrid>
                             </div>
