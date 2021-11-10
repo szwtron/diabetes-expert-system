@@ -1,16 +1,6 @@
 export class InferenceEngine {
     public fuzzification = (gdp: number, gpp: number, gpt: number, gd2pp: number, hba1c: number, hdl: number, trigliserida: number, insulin: number) => {
-        // let fgdp: string = '';
-        // let fgpp: string = '';
-        // let fgpt: string = '';
-        // let fgd2pp: string = '';
-        // let fhba1c: string = '';
-        // let fhdl: string = '';
-        // let ftrigliserida: string = '';
-        // let finsulin: string = '';
         let fhasil: string = 'Negatif Diabetes';
-
-        
 
         //Fuzzification gdp
         let fgdp: number[] = [0] ;
@@ -21,6 +11,7 @@ export class InferenceEngine {
             fgdp[0] = 1;
         } else if (gdp >= 75 && gdp <= 85){
             fgdp[0] = ((85 - gdp) / 10);
+            console.log("fgdp[0] = " + fgdp[0]);
         } else if (gdp >= 85) {
             fgdp[0] = 0;
         }
@@ -102,11 +93,11 @@ export class InferenceEngine {
 
         //Range gdp sangat tinggi
         if(gpp <= 135){
-            fgpp[0] = 0;
+            fgpp[3] = 0;
         } else if (gpp >= 135 && gpp <= 145){
-            fgpp[0] = ((gpp - 135) / 10);
+            fgpp[3] = ((gpp - 135) / 10);
         } else if (gpp >= 145) {
-            fgpp[0] = 1;
+            fgpp[3] = 1;
         }
 
 
@@ -114,7 +105,7 @@ export class InferenceEngine {
         let fgpt: number[] = [0] ;
 
         //0 low, 1  mid, 2 high, 3 very high
-        //Range gpp rendah 65 - 75
+        //Range gpt rendah 65 - 75
         if(gpt <= 105){
             fgpt[0] = 1;
         } else if (gpt >= 105 && gpt <= 115){
@@ -154,7 +145,7 @@ export class InferenceEngine {
         if(gd2pp <= 95){
             fgd2pp[0] = 1;
         } else if (gd2pp >= 95 && gd2pp <= 105){
-            fgd2pp[0] = ((115 - gd2pp) / 10);
+            fgd2pp[0] = ((105 - gd2pp) / 10);
         } else if (gd2pp >= 105) {
             fgd2pp[0] = 0;
         }
@@ -189,7 +180,7 @@ export class InferenceEngine {
         if(gd2pp <= 195){
             fgd2pp[3] = 0;
         } else if (gd2pp >= 195 && gd2pp <= 205){
-            fgd2pp[3] = ((115 - gd2pp) / 10);
+            fgd2pp[3] = ((gd2pp - 195) / 10);
         } else if (gd2pp >= 205) {
             fgd2pp[3] = 1;
         }
@@ -336,86 +327,157 @@ export class InferenceEngine {
            finsulin[2] = 1;
         }
 
-        for(var i = 0; i < 3; i++){
-            console.log("ba");
-            console.log(fgdp[i]);
+
+
+        //0 low, 1  mid, 2 high, 3 very high
+        let weightRule1 = Math.min(fgdp[0], fhdl[1], fgpt[0]);
+        let weightRule2 = Math.min(fgdp[0], fgpp[0], fgd2pp[1]);
+
+        let weightRule: number[] = [0];
+        weightRule[0] = Math.min(fgdp[0], fhdl[1], fgpt[0]);
+        weightRule[1] = Math.min(fgdp[0], fgpp[0], fgd2pp[1]);
+        weightRule[2] = Math.min(fgpt[0], fhdl[1], fgpt[0]);
+        weightRule[3] = Math.min(fgdp[0], finsulin[1], fhdl[2]);
+        weightRule[4] = Math.min(fgdp[0], fhba1c[0], ftrigliserida[2]);
+        weightRule[5] = Math.min(fgdp[0], ftrigliserida[0], fgd2pp[1]);
+        weightRule[6] = Math.min(fgdp[0], fgd2pp[0], fgpt[0]);
+        weightRule[7] = Math.min(fgpp[0], fgd2pp[0], fhdl[2]);
+        weightRule[8] = Math.min(fgpt[0], fgd2pp[0], fgd2pp[1]);
+        weightRule[9] = Math.min(fgpt[0], fgpp[0], ftrigliserida[2]);
+        weightRule[10] = Math.min(fgpp[0], fhdl[1], fgpt[0]);
+        weightRule[11] = Math.min(fgpp[0], ftrigliserida[2], fgd2pp[1]);
+        weightRule[12] = Math.min(fgpt[0], ftrigliserida[0], fgpt[0]);
+        weightRule[13] = Math.min(fgpt[0], fhba1c[0], ftrigliserida[2]);
+        weightRule[14] = Math.min(fgd2pp[0], fhdl[1], fgpt[0]);
+        weightRule[15] = Math.min(fgpp[0], fhba1c[0], fgd2pp[1]);
+        weightRule[16] = Math.min(fgpt[0], finsulin[1], fhdl[2]);
+        weightRule[17] = Math.min(fgdp[0], fgpt[0], fgpt[0]);
+        weightRule[18] = Math.min(fgd2pp[0], fhba1c[0], fgd2pp[1]);
+        weightRule[19] = Math.min(fhba1c[0], fhdl[1], ftrigliserida[2]);
+        weightRule[20] = Math.min(fhba1c[0], ftrigliserida[0], fgpt[0]);
+        weightRule[21] = Math.min(fgd2pp[0], ftrigliserida[0], fgpt[0]);
+        weightRule[22] = Math.min(fgdp[1], fgpt[1], fhdl[2]);
+        weightRule[23] = Math.min(fgdp[1], fgd2pp[2], ftrigliserida[0]);
+        weightRule[24] = Math.min(fgdp[1], fgpp[1], finsulin[0]);
+        weightRule[25] = Math.min(fhba1c[2], ftrigliserida[2], ftrigliserida[2]);
+        weightRule[26] = Math.min(fgdp[3], finsulin[0], fgpt[2]);
+        weightRule[27] = Math.min(fhba1c[2], finsulin[0], finsulin[0]);
+        weightRule[28] = Math.min(fgdp[3], fhdl[0], fgd2pp[2]);
+        weightRule[29] = Math.min(fhba1c[2], fhdl[0], ftrigliserida[2]);
+        weightRule[30] = Math.min(fgdp[2], finsulin[0], fgd2pp[2]);
+        weightRule[31] = Math.min(fgdp[2], fgpp[2], ftrigliserida[2]);
+        weightRule[32] = Math.min(fgdp[3], fgpp[2], fgd2pp[2]);
+        weightRule[33] = Math.min(fgdp[2], fgpp[3], ftrigliserida[2]);
+        weightRule[34] = Math.min(fgdp[3], ftrigliserida[2], fgpt[2]);
+        weightRule[35] = Math.min(fgdp[0], fgpp[2], ftrigliserida[2]);
+
+
+        var j = 0;
+        var k = 0;
+        var l = 0;
+        var m = 0;
+        //Memisahkan weight rule negatif diabetes, pra diabetes, diabetes 1, dan diabetes 2
+        let praDiabetes: number[] = [0];
+        let diabetes1 : number[] = [0];
+        let diabetes2: number[] = [0];
+        let negatifDiabetes : number[] = [0];
+
+        //Negatif diabetes
+        for(var i = 0; i < 36; i++){
+            negatifDiabetes[m] = weightRule[i];
+            m++;
         }
 
-        //If-then rule
-        // if(fgdp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fgpp == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && finsulin == "Sedang" && fhdl == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fhba1c == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && ftrigliserida == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fgd2pp == "Rendah" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && fgd2pp == "Rendah" && fhdl == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fgdp == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fgpp == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && ftrigliserida == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && ftrigliserida == "Rendah" && fgpp == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fhba1c == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgd2pp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && fhba1c == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && finsulin == "Sedang" && fhdl == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fgpt == "Rendah" && fgpp == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fhba1c == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fhba1c == "Rendah" && fhdl == "Sedang" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fhba1c == "Rendah" && ftrigliserida == "Rendah" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgd2pp == "Rendah" && ftrigliserida == "Rendah" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Sedang" && fgpt == "Sedang" && fhdl == "Tinggi") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fgdp == "Sedang" && fgd2pp == "Tinggi" && finsulin == "Rendah") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fgdp == "Sedang" && fgpp == "Sedang" && finsulin == "Rendah") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fhba1c == "Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 1";
-        // } else if(fgdp == "Sangat Tinggi" && finsulin == "Rendah" && fgpt == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 1";
-        // } else if(fhba1c == "Tinggi" && finsulin == "Rendah") {
-        //     fhasil = "Positif Diabetes Tipe 1";
-        // } else if(fgdp == "Sangat Tinggi" && fhdl == "Rendah" && fgd2pp == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fhba1c == "Tinggi" && fhdl == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Tinggi" && finsulin == "Rendah" && fgd2pp == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Tinggi" && fgpp == "Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fgdp == "Sangat Tinggi" && fgpp == "Tinggi" && fgd2pp == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Tinggi" && fgpp == "Sangat Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Sangat Tinggi" && ftrigliserida == "Tinggi" && fgpt == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Rendag" && fgpp == "Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "PraDiabetes";
-        // }
+        for(var i = 0; i < 36; i++){
+            //Pradiabetes
+            if(i == 22){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 23){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 24){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 31){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 35){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
 
-        return fgdp;
+            //diabetes tipe 1
+            if(i == 25){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+            if(i == 26){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+            if(i == 27){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+
+            //Diabetes tipe 2
+            if(i == 28){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+            if(i == 29){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+            if(i == 30){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+            if(i == 32){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+
+            if(i == 33){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+            if(i == 34){
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+        }
+
+        let maxProbs: number = 0;
+        let index: number = 0;
+        for(var i = 0; i < 36; i++){
+            if(weightRule[i] >= maxProbs){
+                maxProbs = Math.max(weightRule[i]);
+                index = i;
+            }
+        }
+
+        console.log("Hasil diagnosa")
+        console.log("Sesuai dengan rules nomor = " + index);
+        console.log("Dengan bobot = " + (maxProbs * 100) + "%");
+
+        if (index < 22){
+            fhasil = "Negatif Diabetes";
+        } else if ((index >= 22 && index < 25) || index == 31 || index == 35){
+            fhasil = "Pra Diabetes";
+        } else if (index >= 25 && index < 28){
+            fhasil = "Diabetes Tipe 1";
+        } else if ((index >= 28 && index < 31) || (index >= 32 && index < 35)){
+            fhasil = "Diabetes Tipe 2";
+        }
+
+        return fhasil;
     };
 };
