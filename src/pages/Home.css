@@ -8,7 +8,7 @@ body {
 }
 .bg1{
 	/* --ion-background-color: #0f184a !important; */
-	--ion-background-color: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab) !important;
+	--ion-background-color: linear-gradient(-45deg, #1c2433, #142433, #1ca0f4, #23d5ab) !important;
 }
 
 article,
