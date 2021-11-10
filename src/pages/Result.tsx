@@ -6,7 +6,7 @@ import './Home.css';
 const Result = () => {
     const diabetesCtx = useContext(DiagnosisContext);
     console.log(diabetesCtx.diagnosis);
-    
+
     return (
         <IonPage>
             <IonHeader>

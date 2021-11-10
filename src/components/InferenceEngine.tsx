@@ -392,7 +392,7 @@ export class InferenceEngine {
         let diabetes2: number[] = [0];
         let negatifDiabetes : number[] = [0];
 
-        for(var i = 0; i < 22; i++){
+        for(var i = 0; i < 36; i++){
             negatifDiabetes[m] = weightRule[i];
             m++;
         }
@@ -465,21 +465,6 @@ export class InferenceEngine {
                 diabetes2[l] = weightRule[i];
                 l++;
             }
-
-
-
-            // if(i == 22 || i == 23 || i == 24 || i == 31 || i == 35){
-            //     praDiabetes[j] = weightRule[i];
-            //     j++;
-            // }
-            // if(i == 25 || i == 26 || i == 27){
-            //     diabetes1[k] = weightRule[i];
-            //     k++;
-            // }
-            // if(i == 28 || i == 29 || i == 30 || i == 32 || i == 33 || i == 34){ 
-            //     diabetes2[l] = weightRule[i];
-            //     l++;
-            // }
         }
 
         console.log("Non diabetes");
@@ -512,7 +497,7 @@ export class InferenceEngine {
                 console.log("Rules - " + (i+1));
                 console.log(diabetes2[i]);
             }
-        }  
+        }
 
         let maxProbs: number = 0;
         let index: number = 0;
@@ -528,83 +513,18 @@ export class InferenceEngine {
         console.log("Hasil diagnosa")
         console.log("Sesuai dengan rules nomor = " + index);
         console.log("Dengan bobot = " + (maxProbs * 100) + "%");
-        
 
-        //If-then rule
-        // if(fgdp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fgpp == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && finsulin == "Sedang" && fhdl == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fhba1c == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && ftrigliserida == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fgd2pp == "Rendah" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && fgd2pp == "Rendah" && fhdl == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fgdp == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fgpp == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && ftrigliserida == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && ftrigliserida == "Rendah" && fgpp == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && fhba1c == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgd2pp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpp == "Rendah" && fhba1c == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgpt == "Rendah" && finsulin == "Sedang" && fhdl == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fgpt == "Rendah" && fgpp == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Rendah" && fhba1c == "Rendah" && fgd2pp == "Sedang") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fhba1c == "Rendah" && fhdl == "Sedang" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fhba1c == "Rendah" && ftrigliserida == "Rendah" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgd2pp == "Rendah" && ftrigliserida == "Rendah" && fgpt == "Rendah") {
-        //     fhasil = "Negatif Diabetes";
-        // } else if(fgdp == "Sedang" && fgpt == "Sedang" && fhdl == "Tinggi") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fgdp == "Sedang" && fgd2pp == "Tinggi" && finsulin == "Rendah") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fgdp == "Sedang" && fgpp == "Sedang" && finsulin == "Rendah") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fhba1c == "Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 1";
-        // } else if(fgdp == "Sangat Tinggi" && finsulin == "Rendah" && fgpt == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 1";
-        // } else if(fhba1c == "Tinggi" && finsulin == "Rendah") {
-        //     fhasil = "Positif Diabetes Tipe 1";
-        // } else if(fgdp == "Sangat Tinggi" && fhdl == "Rendah" && fgd2pp == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fhba1c == "Tinggi" && fhdl == "Rendah" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Tinggi" && finsulin == "Rendah" && fgd2pp == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Tinggi" && fgpp == "Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "PraDiabetes";
-        // } else if(fgdp == "Sangat Tinggi" && fgpp == "Tinggi" && fgd2pp == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Tinggi" && fgpp == "Sangat Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Sangat Tinggi" && ftrigliserida == "Tinggi" && fgpt == "Tinggi") {
-        //     fhasil = "Positif Diabetes Tipe 2";
-        // } else if(fgdp == "Rendag" && fgpp == "Tinggi" && ftrigliserida == "Tinggi") {
-        //     fhasil = "PraDiabetes";
-        // }
 
-        return fgdp;
+        if (index < 22){
+            fhasil = "Negatif Diabetes";
+        } else if ((index >= 22 && index < 25) || index == 31 || index == 35){
+            fhasil = "Pra Diabetes";
+        } else if (index >= 25 && index < 28){
+            fhasil = "Diabetes Tipe 1";
+        } else if ((index >= 28 && index < 31) || (index >= 32 && index < 35)){
+            fhasil = "Diabetes Tipe 2";
+        }
+
+        return fhasil;
     };
 };

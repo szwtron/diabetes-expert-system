@@ -29,13 +29,13 @@ const Diagnosys: React.FC = () => {
         const enteredHdl = 53;
         const enteredTrigliserida = 153;
         const enteredInsulin = 2;
-        const hasil = 10;
+        let hasil = '';
 
         const hasil2 = inferenceEngine.fuzzification(enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin);
         console.log("baba" + hasil2);
         //gdp threshold
-        
-        // hasil = fungsi(blablabla);
+
+        hasil = inferenceEngine.fuzzification(enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin);
 
         diagnosisCtx.addDiagnosis(enteredEmail, enteredName.toString(), enteredTelepon, enteredSex, enteredUmur, enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin, hasil);
 
