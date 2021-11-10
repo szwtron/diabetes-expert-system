@@ -3,35 +3,52 @@ import { useContext, useRef } from "react";
 import { useHistory } from "react-router";
 import DiagnosisContext from "../data/diagnosis-context";
 import './Home.css';
+import { InferenceEngine } from "../components/InferenceEngine";
 
 
 
 const Diagnosys: React.FC = () => {
 
     const nameRef = useRef<HTMLIonInputElement>(null);
+    const emailRef = useRef<HTMLIonInputElement>(null);
+    const telponRef = useRef<HTMLIonInputElement>(null);
+    const sexRef = useRef<HTMLIonInputElement>(null);
+    const umurRef = useRef<HTMLIonInputElement>(null);
+    const gdpRef = useRef<HTMLIonInputElement>(null);
+    const gppRef = useRef<HTMLIonInputElement>(null);
+    const gptRef = useRef<HTMLIonInputElement>(null);
+    const gd2ppRef = useRef<HTMLIonInputElement>(null);
+    const hba1cRef = useRef<HTMLIonInputElement>(null);
+    const hdlRef = useRef<HTMLIonInputElement>(null);
+    const trrigliseridaRef = useRef<HTMLIonInputElement>(null);
+    const insulinRef = useRef<HTMLIonInputElement>(null);
+
     const diagnosisCtx = useContext(DiagnosisContext);
     const history = useHistory();
+    const inferenceEngine = new InferenceEngine();
 
     const addDiagnosisHandler = async () => {
 
-        const enteredEmail = "";
+        const enteredEmail = emailRef.current?.value as string;
         const enteredName = nameRef.current?.value as string;
-        const enteredTelepon = 0;
-        const enteredSex = "";
-        const enteredUmur = 1;
-        const enteredGdp = 2;
-        const enteredGpp = 3;
-        const enteredGpt = 4;
-        const enteredGd2pp = 5;
-        const enteredHba1c = 6;
-        const enteredHdl = 7;
-        const enteredTrigliserida = 8;
-        const enteredInsulin = 9;
-        const hasil = 10;
+        const enteredTelepon = telponRef.current?.value as string;
+        const enteredSex = sexRef.current?.value as string;
+        const enteredUmur = umurRef.current?.value as number;
+        const enteredGdp = gdpRef.current?.value as number;
+        const enteredGpp = gppRef.current?.value as number;
+        const enteredGpt = gptRef.current?.value as number;
+        const enteredGd2pp = gd2ppRef.current?.value as number;
+        const enteredHba1c = hba1cRef.current?.value as number;
+        const enteredHdl = hdlRef.current?.value as number;
+        const enteredTrigliserida = trrigliseridaRef.current?.value as number;
+        const enteredInsulin = insulinRef.current?.value as number;
+        let hasil = '';
 
+        const hasil2 = inferenceEngine.fuzzification(enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin);
+        console.log("baba" + hasil2);
         //gdp threshold
-        
-        // hasil = fungsi(blablabla);
+
+        hasil = inferenceEngine.fuzzification(enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin);
 
         diagnosisCtx.addDiagnosis(enteredEmail, enteredName.toString(), enteredTelepon, enteredSex, enteredUmur, enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin, hasil);
 
@@ -56,58 +73,58 @@ const Diagnosys: React.FC = () => {
                                     <div>
                                         <IonItem>
                                             <IonLabel position="floating">Nama</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput ref={nameRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Email</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="email" ref={emailRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Nomor Telepon</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput ref={telponRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Jenis Kelamin</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput ref={sexRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Umur</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={umurRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Gula Darah Puasa (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={gdpRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Gula Plasma Puasa (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={gppRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Gula Plasma Tidur (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={gptRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Gula Darah 2 jam PP (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={gd2ppRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Kadar HbA1c (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={hba1cRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Kadar HDL (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={hdlRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Kadar Trigliserida (mg/dl)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={trrigliseridaRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
                                             <IonLabel position="floating">Kadar Insulin (%)</IonLabel>
-                                            <IonInput></IonInput>
+                                            <IonInput type="number" ref={insulinRef}></IonInput>
                                         </IonItem>
                                         <IonItem>
-                                            <IonButton href="/result">Submit</IonButton>
+                                            <IonButton onClick={addDiagnosisHandler}>Submit</IonButton>
                                         </IonItem>
                                     </div>
                                 </IonCol>
@@ -165,22 +182,22 @@ const Diagnosys: React.FC = () => {
                                                     </IonCol>
                                                     <IonCol>
                                                         <IonText color="primary">
-                                                            <p className="text-center">&lt; 79</p>
+                                                            <p className="text-center">&lt; 75</p>
                                                         </IonText>
                                                     </IonCol>
                                                     <IonCol>
                                                         <IonText color="primary">
-                                                            <p className="text-center">79 &le; GPP &le; 120</p>
+                                                            <p className="text-center">75 &le; GPP &le; 115</p>
                                                         </IonText>
                                                     </IonCol>
                                                     <IonCol>
                                                         <IonText color="primary">
-                                                            <p className="text-center">120 &le; GPP &le; 135</p>
+                                                            <p className="text-center">115 &le; GPP &le; 145</p>
                                                         </IonText>
                                                     </IonCol>
                                                     <IonCol>
                                                         <IonText color="primary">
-                                                            <p className="text-center">&gt; 135</p>
+                                                            <p className="text-center">&gt; 145</p>
                                                         </IonText>
                                                     </IonCol>
                                                 </IonRow>
