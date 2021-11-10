@@ -21,6 +21,7 @@ export class InferenceEngine {
             fgdp[0] = 1;
         } else if (gdp >= 75 && gdp <= 85){
             fgdp[0] = ((85 - gdp) / 10);
+            console.log("fgdp[0] = " + fgdp[0]);
         } else if (gdp >= 85) {
             fgdp[0] = 0;
         }
@@ -102,11 +103,11 @@ export class InferenceEngine {
 
         //Range gdp sangat tinggi
         if(gpp <= 135){
-            fgpp[0] = 0;
+            fgpp[3] = 0;
         } else if (gpp >= 135 && gpp <= 145){
-            fgpp[0] = ((gpp - 135) / 10);
+            fgpp[3] = ((gpp - 135) / 10);
         } else if (gpp >= 145) {
-            fgpp[0] = 1;
+            fgpp[3] = 1;
         }
 
 
@@ -114,7 +115,7 @@ export class InferenceEngine {
         let fgpt: number[] = [0] ;
 
         //0 low, 1  mid, 2 high, 3 very high
-        //Range gpp rendah 65 - 75
+        //Range gpt rendah 65 - 75
         if(gpt <= 105){
             fgpt[0] = 1;
         } else if (gpt >= 105 && gpt <= 115){
@@ -154,7 +155,7 @@ export class InferenceEngine {
         if(gd2pp <= 95){
             fgd2pp[0] = 1;
         } else if (gd2pp >= 95 && gd2pp <= 105){
-            fgd2pp[0] = ((115 - gd2pp) / 10);
+            fgd2pp[0] = ((105 - gd2pp) / 10);
         } else if (gd2pp >= 105) {
             fgd2pp[0] = 0;
         }
@@ -189,7 +190,7 @@ export class InferenceEngine {
         if(gd2pp <= 195){
             fgd2pp[3] = 0;
         } else if (gd2pp >= 195 && gd2pp <= 205){
-            fgd2pp[3] = ((115 - gd2pp) / 10);
+            fgd2pp[3] = ((gd2pp - 195) / 10);
         } else if (gd2pp >= 205) {
             fgd2pp[3] = 1;
         }
@@ -336,10 +337,116 @@ export class InferenceEngine {
            finsulin[2] = 1;
         }
 
-        for(var i = 0; i < 3; i++){
-            console.log("ba");
-            console.log(fgdp[i]);
+
+
+        //0 low, 1  mid, 2 high, 3 very high
+        let weightRule1 = Math.min(fgdp[0], fhdl[1], fgpt[0]);
+        let weightRule2 = Math.min(fgdp[0], fgpp[0], fgd2pp[1]);
+
+        let weightRule: number[] = [0];
+        weightRule[0] = Math.min(fgdp[0], fhdl[1], fgpt[0]);
+        weightRule[1] = Math.min(fgdp[0], fgpp[0], fgd2pp[1]);
+        weightRule[2] = Math.min(fgpt[0], fhdl[1], fgpt[0]);
+        weightRule[3] = Math.min(fgdp[0], finsulin[1], fhdl[2]);
+        weightRule[4] = Math.min(fgdp[0], fhba1c[0], ftrigliserida[2]);
+        weightRule[5] = Math.min(fgdp[0], ftrigliserida[0], fgd2pp[1]);
+        weightRule[6] = Math.min(fgdp[0], fgd2pp[0], fgpt[0]);
+        weightRule[7] = Math.min(fgpp[0], fgd2pp[0], fhdl[2]);
+        weightRule[8] = Math.min(fgpt[0], fgd2pp[0], fgd2pp[1]);
+        weightRule[9] = Math.min(fgpt[0], fgpp[0], ftrigliserida[2]);
+        weightRule[10] = Math.min(fgpp[0], fhdl[1], fgpt[0]);
+        weightRule[11] = Math.min(fgpp[0], ftrigliserida[2], fgd2pp[1]);
+        weightRule[12] = Math.min(fgpt[0], ftrigliserida[0], fgpt[0]);
+        weightRule[13] = Math.min(fgpt[0], fhba1c[0], ftrigliserida[2]);
+        weightRule[14] = Math.min(fgd2pp[0], fhdl[1], fgpt[0]);
+        weightRule[15] = Math.min(fgpp[0], fhba1c[0], fgd2pp[1]);
+        weightRule[16] = Math.min(fgpt[0], finsulin[1], fhdl[2]);
+        weightRule[17] = Math.min(fgdp[0], fgpt[0], fgpt[0]);
+        weightRule[18] = Math.min(fgd2pp[0], fhba1c[0], fgd2pp[1]);
+        weightRule[19] = Math.min(fhba1c[0], fhdl[1], ftrigliserida[2]);
+        weightRule[20] = Math.min(fhba1c[0], ftrigliserida[0], fgpt[0]);
+        weightRule[21] = Math.min(fgd2pp[0], ftrigliserida[0], fgpt[0]);
+        weightRule[22] = Math.min(fgdp[1], fgpt[1], fhdl[2]);
+        weightRule[23] = Math.min(fgdp[1], fgd2pp[2], ftrigliserida[0]);
+        weightRule[24] = Math.min(fgdp[1], fgpp[1], finsulin[0]);
+        weightRule[25] = Math.min(fhba1c[2], ftrigliserida[2], ftrigliserida[2]);
+        weightRule[26] = Math.min(fgdp[3], finsulin[0], fgpt[2]);
+        weightRule[27] = Math.min(fhba1c[2], finsulin[0], finsulin[0]);
+        weightRule[28] = Math.min(fgdp[3], fhdl[0], fgd2pp[2]);
+        weightRule[29] = Math.min(fhba1c[2], fhdl[0], ftrigliserida[2]);
+        weightRule[30] = Math.min(fgdp[2], finsulin[0], fgd2pp[2]);
+        weightRule[31] = Math.min(fgdp[2], fgpp[2], ftrigliserida[2]);
+        weightRule[32] = Math.min(fgdp[3], fgpp[2], fgd2pp[2]);
+        weightRule[33] = Math.min(fgdp[2], fgpp[3], ftrigliserida[2]);
+        weightRule[34] = Math.min(fgdp[3], ftrigliserida[2], fgpt[2]);
+        weightRule[35] = Math.min(fgdp[0], fgpp[2], ftrigliserida[2]);
+
+
+        var j = 0;
+        var k = 0;
+        var l = 0;
+        var m = 0;
+        //Memisahkan weight rule negatif diabetes, pra diabetes, diabetes 1, dan diabetes 2
+        let praDiabetes: number[] = [0];
+        let diabetes1 : number[] = [0];
+        let diabetes2: number[] = [0];
+        let negatifDiabetes : number[] = [0];
+
+        for(var i = 0; i < 36; i++){
+            //console.log("Rules - " + (i+1));
+            console.log(weightRule[i]);
+            if(i == 22 || i == 23 || i == 24 || i == 31 || i == 35){
+                praDiabetes[j] = weightRule[i];
+                j++;
+            }
+            if(i == 25 || i == 26 || i == 27){
+                diabetes1[k] = weightRule[i];
+                k++;
+            }
+            if(i == 28 || i == 29 || i == 30 || i == 32 || i == 33 || i == 34){ 
+                diabetes2[l] = weightRule[i];
+                l++;
+            }
+            negatifDiabetes[m] = weightRule[i];
+            m++;
         }
+
+        console.log("Non diabetes");
+        for(var i = 0; i < 36; i++){
+            if(negatifDiabetes[i] != 0){
+                console.log("Rules - " + (i+1));
+                console.log(negatifDiabetes[i]);
+            }
+        }
+
+        console.log("Pra diabetes");
+        for(var i = 0; i < 36; i++){
+            if(praDiabetes[i] != 0){
+                console.log("Rules - " + (i+1));
+                console.log(praDiabetes[i]);
+            }
+        }
+
+        console.log("diabetes tipe 1");
+        for(var i = 0; i < 36; i++){
+            if(diabetes1[i] != 0){
+                console.log("Rules - " + (i+1));
+                console.log(diabetes1[i]);
+            }
+        }
+
+        console.log("diabetes tipe 2");
+        for(var i = 0; i < 36; i++){
+            if(diabetes2[i] != 0){
+                console.log("Rules - " + (i+1));
+                console.log(diabetes2[i]);
+            }
+        }
+
+        //tes mamdani
+        //range diabetes 0 - 1
+        console.log("Mamdani");
+        
 
         //If-then rule
         // if(fgdp == "Rendah" && fhdl == "Sedang" && fgpt == "Rendah") {

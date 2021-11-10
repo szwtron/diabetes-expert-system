@@ -21,14 +21,14 @@ const Diagnosys: React.FC = () => {
         const enteredTelepon = 0;
         const enteredSex = "";
         const enteredUmur = 1;
-        const enteredGdp = 75;
-        const enteredGpp = 3;
-        const enteredGpt = 4;
-        const enteredGd2pp = 5;
-        const enteredHba1c = 6;
-        const enteredHdl = 7;
-        const enteredTrigliserida = 8;
-        const enteredInsulin = 9;
+        const enteredGdp = 82;
+        const enteredGpp = 73;
+        const enteredGpt = 111;
+        const enteredGd2pp = 102;
+        const enteredHba1c = 5;
+        const enteredHdl = 53;
+        const enteredTrigliserida = 153;
+        const enteredInsulin = 2;
         const hasil = 10;
 
         const hasil2 = inferenceEngine.fuzzification(enteredGdp, enteredGpp, enteredGpt, enteredGd2pp, enteredHba1c, enteredHdl, enteredTrigliserida, enteredInsulin);
