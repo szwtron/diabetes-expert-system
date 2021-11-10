@@ -1,16 +1,6 @@
 export class InferenceEngine {
     public fuzzification = (gdp: number, gpp: number, gpt: number, gd2pp: number, hba1c: number, hdl: number, trigliserida: number, insulin: number) => {
-        // let fgdp: string = '';
-        // let fgpp: string = '';
-        // let fgpt: string = '';
-        // let fgd2pp: string = '';
-        // let fhba1c: string = '';
-        // let fhdl: string = '';
-        // let ftrigliserida: string = '';
-        // let finsulin: string = '';
         let fhasil: string = 'Negatif Diabetes';
-
-        
 
         //Fuzzification gdp
         let fgdp: number[] = [0] ;
@@ -392,15 +382,13 @@ export class InferenceEngine {
         let diabetes2: number[] = [0];
         let negatifDiabetes : number[] = [0];
 
+        //Negatif diabetes
         for(var i = 0; i < 36; i++){
             negatifDiabetes[m] = weightRule[i];
             m++;
         }
 
         for(var i = 0; i < 36; i++){
-            //console.log("Rules - " + (i+1));
-            console.log("Rules - " + (i+1) + " = " + weightRule[i]);
-
             //Pradiabetes
             if(i == 22){
                 praDiabetes[j] = weightRule[i];
@@ -467,38 +455,6 @@ export class InferenceEngine {
             }
         }
 
-        console.log("Non diabetes");
-        for(var i = 0; i < m; i++){
-            if(negatifDiabetes[i] != 0){
-                console.log("Rules - " + (i+1));
-                console.log(negatifDiabetes[i]);
-            }
-        }
-
-        console.log("Pra diabetes");
-        for(var i = 0; i < j; i++){
-            if(praDiabetes[i] != 0){
-                console.log("Rules - " + (i+1));
-                console.log(praDiabetes[i]);
-            }
-        }
-
-        console.log("diabetes tipe 1");
-        for(var i = 0; i < k; i++){
-            if(diabetes1[i] != 0){
-                console.log("Rules - " + (i+1));
-                console.log(diabetes1[i]);
-            }
-        }
-
-        console.log("diabetes tipe 2");
-        for(var i = 0; i < l; i++){
-            if(diabetes2[i] != 0){
-                console.log("Rules - " + (i+1));
-                console.log(diabetes2[i]);
-            }
-        }
-
         let maxProbs: number = 0;
         let index: number = 0;
         for(var i = 0; i < 36; i++){
@@ -508,12 +464,9 @@ export class InferenceEngine {
             }
         }
 
-        //tes mamdani
-        //range diabetes 0 - 1
         console.log("Hasil diagnosa")
         console.log("Sesuai dengan rules nomor = " + index);
         console.log("Dengan bobot = " + (maxProbs * 100) + "%");
-
 
         if (index < 22){
             fhasil = "Negatif Diabetes";
