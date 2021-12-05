@@ -2,6 +2,7 @@ import { IonButton, IonCard, IonCardTitle, IonCol, IonContent, IonGrid, IonHeade
 import { useContext } from "react";
 import DiagnosisContext from "../data/diagnosis-context";
 import './Home.css';
+import './Result.css';
 
 const Result = () => {
     const diabetesCtx = useContext(DiagnosisContext);
@@ -25,8 +26,8 @@ const Result = () => {
                         <div className="hero-inner">
                             <IonGrid>
                                 <IonRow>
-                                    <IonCol size="6">
-                                        <IonImg src="assets/img/medical-tools.png" />
+                                    <IonCol className="imgResult" size="6">
+                                        <IonImg className="imgResult" src="assets/img/medical-tools.png" />
                                     </IonCol>
                                     {diabetesCtx.diagnosis && diabetesCtx.diagnosis.map(diagnosis => (
                                         <IonCol key={diagnosis.id} size="6">
